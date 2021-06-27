@@ -1,0 +1,54 @@
+{
+	"person": {
+		"photo": "images/application-photo/web.jpg",
+		"firstName": "Valentin",
+		"lastName": "Schabschneider",
+		"birthdate": "1996-11-18",
+		"nationality": "österreichisch",
+		"address": ["Köchling 27", "3371 Wieselburg-Land"],
+		"phoneNumber": "0677 62142687",
+		"mailAdress": "v.schabschneider@daval.dev"
+	},
+	"workExperience": [
+		{
+			"dateRange": "Juni 2017 - jetzt",
+			"company": "3 Banken-Generali Investment GmbH."
+		},
+		{ "dateRange": "Juli 2015", "company": "Ferialpraxis bei Mechatron" },
+		{ "dateRange": "Juli 2014", "company": "Ferialpraxis bei Umdasch AG" }
+	],
+	"education": [
+		{ "dateRange": "2011 – 2016", "school": "IT-HTL in Ybbs an der Donau" },
+		{ "dateRange": "2007 – 2011", "school": "BG/ BRG in Wieselburg" },
+		{
+			"dateRange": "2003 – 2007",
+			"school": "Volksschule in Neumarkt an der Ybbs"
+		}
+	],
+	"skills": [
+		{ "level": "excellent", "skill": "Python (Django, Flask)" },
+		{ "level": "excellent", "skill": "SQL" },
+		{ "level": "excellent", "skill": "Windows" },
+		{ "level": "excellent", "skill": "Microsoft Office" },
+		{ "level": "advanced", "skill": "Java" },
+		{ "level": "advanced", "skill": "JavaScript / TypeScript" },
+		{ "level": "advanced", "skill": "NodeJS, ReactJS" },
+		{ "level": "advanced", "skill": "C, C#" },
+		{ "level": "advanced", "skill": "PHP" },
+		{ "level": "advanced", "skill": "HTML5, CSS3" },
+		{ "level": "advanced", "skill": "GIT, SVN" },
+		{ "level": "advanced", "skill": "Nginx" },
+		{ "level": "advanced", "skill": "Linux" },
+		{ "level": "advanced", "skill": "Jira" },
+		{ "level": "advanced", "skill": "Confluence" },
+		{ "level": "basic", "skill": "Adobe Creative Cloud" },
+		{ "level": "basic", "skill": "Angular" },
+		{ "level": "basic", "skill": "Docker" },
+		{ "level": "basic", "skill": "GraphQL" }
+	],
+	"languages": [
+		{ "language": "Deutsch", "level": "Muttersprache" },
+		{ "language": "Englisch", "level": "Fließend" }
+	],
+	"hobbies": ["Fußball", "Kajak fahren", "Skifahren", "Klettern", "Musik"]
+}
