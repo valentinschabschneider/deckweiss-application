@@ -1,6 +1,6 @@
 {
 	"person": {
-		"photo": "images/application-photo/web.jpg",
+		"photo": "assets/images/application-photo/web.jpg",
 		"firstName": "Valentin",
 		"lastName": "Schabschneider",
 		"birthdate": "1996-11-18",

@@ -85,7 +85,7 @@ class CVScreenWidget extends StatelessWidget {
         ),
       ),
       body: FutureBuilder(
-        future: fetch("cv-data.json"),
+        future: fetch("assets/cv-data.json"),
         builder: (BuildContext context, AsyncSnapshot<CV> snapshot) {
           if (snapshot.hasData) {
             return CVWidget(snapshot.data!);

@@ -18,7 +18,7 @@ class Index extends StatelessWidget {
               child: Column(
             children: <Widget>[
               Image.asset(
-                'images/meme/web.png',
+                'assets/images/meme/web.png',
                 fit: BoxFit.cover,
               ),
               Text(

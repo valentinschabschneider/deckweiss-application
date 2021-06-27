@@ -12,7 +12,7 @@ class MotivationLetterScreen extends StatelessWidget {
         ),
       ),
       body: FutureBuilder(
-        future: rootBundle.loadString("motivation-letter.txt"),
+        future: rootBundle.loadString("assets/motivation-letter.txt"),
         builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
           if (snapshot.hasData) {
             return Text(snapshot.data!);
