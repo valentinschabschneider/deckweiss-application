@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 class MotivationLetterScreen extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -11,16 +14,29 @@ class MotivationLetterScreen extends StatelessWidget {
           'Motivationsschreiben',
         ),
       ),
-      body: FutureBuilder(
-        future: rootBundle.loadString("assets/motivation-letter.txt"),
-        builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
-          if (snapshot.hasData) {
-            return Text(snapshot.data!);
-          } else if (snapshot.hasError)
-            throw snapshot.error!;
-          else
-            return CircularProgressIndicator();
-        },
+      body: Center(
+        child: Container(
+          constraints: BoxConstraints(minWidth: 100, maxWidth: 800),
+          child: FutureBuilder(
+            future: rootBundle.loadString("assets/motivation-letter.md"),
+            builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+              return snapshot.hasData
+                  ? Markdown(
+                      data: snapshot.data!,
+                      styleSheet: MarkdownStyleSheet(
+                        textAlign: WrapAlignment.start,
+                        p: TextStyle(
+                          fontSize: 16,
+                        ),
+                      ),
+                      onTapLink: (text, url, title) {
+                        launch(url!);
+                      },
+                    )
+                  : Center(child: CircularProgressIndicator());
+            },
+          ),
+        ),
       ),
     );
   }

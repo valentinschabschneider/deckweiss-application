@@ -29,6 +29,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   url_launcher: ^6.0.6
   intl: ^0.17.0
+  flutter_markdown: ^0.6.2
 
 dev_dependencies:
   flutter_test:
@@ -49,7 +50,7 @@ flutter:
     - assets/images/meme/web.png
     - assets/images/application-photo/web.jpg
     - assets/cv-data.json
-    - assets/motivation-letter.txt
+    - assets/motivation-letter.md
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
