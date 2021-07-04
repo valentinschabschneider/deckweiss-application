@@ -51,6 +51,7 @@ flutter:
     - assets/images/application-photo/web.jpg
     - assets/cv-data.json
     - assets/motivation-letter.md
+    - assets/images/under-construction.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
