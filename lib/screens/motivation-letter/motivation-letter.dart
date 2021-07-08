@@ -13,6 +13,7 @@ class MotivationLetterScreen extends StatelessWidget {
         title: Text(
           'Motivationsschreiben',
         ),
+        backgroundColor: Color(0xFF1d1d1d),
       ),
       body: Center(
         child: Container(

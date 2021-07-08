@@ -4,5 +4,3 @@ import 'package:deckweiss_application/app.dart';
 void main() {
   runApp(App());
 }
-
-
