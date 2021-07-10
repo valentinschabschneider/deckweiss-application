@@ -25,16 +25,18 @@ class MotivationLetterScreen extends StatelessWidget {
                   ? Markdown(
                       data: snapshot.data!,
                       styleSheet: MarkdownStyleSheet(
-                        textAlign: WrapAlignment.start,
+                        textAlign: WrapAlignment.spaceEvenly,
                         p: TextStyle(
-                          fontSize: 16,
+                          fontSize: 20,
                         ),
                       ),
                       onTapLink: (text, url, title) {
                         launch(url!);
                       },
                     )
-                  : Center(child: CircularProgressIndicator());
+                  : Center(
+                      child: CircularProgressIndicator(),
+                    );
             },
           ),
         ),
