@@ -12,7 +12,7 @@ class Button extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 300,
-      height: 80,
+      height: 75,
       decoration: BoxDecoration(
         color: this.backgroundColor,
         borderRadius: BorderRadius.circular(10),
@@ -33,7 +33,7 @@ class Button extends StatelessWidget {
             children: [
               Center(
                 child: Container(
-                  width: 70,
+                  width: 75,
                   padding: EdgeInsets.only(left: 20),
                   child: this.icon,
                 ),
