@@ -43,105 +43,113 @@ class CVWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        Column(
-          children: [
-            Container(
-                constraints: BoxConstraints(maxHeight: 720),
-                child: Image.asset(
-                  this.cv.person.photo,
-                  fit: BoxFit.fitHeight,
-                )),
-            Text(this.cv.person.fullName),
-            Text(DateFormat('dd. MMMM yyyy').format(this.cv.person.birthdate)),
-            Text(this.cv.person.nationality),
-            Text(this.cv.person.address.join(', ')),
-            Text(this.cv.person.phoneNumber),
-            InkWell(
-              child: Text(this.cv.person.mailAdress,
-                  style: TextStyle(
-                      decoration: TextDecoration.underline,
-                      color: Colors.blue)),
-              onTap: () => launch('mailto:${this.cv.person.mailAdress}'),
+    bool isScreenWide = MediaQuery.of(context).size.width >= 1500;
+
+    return LayoutBuilder(
+      builder: (
+        BuildContext context,
+        BoxConstraints viewportConstraints,
+      ) {
+        return SingleChildScrollView(
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              minHeight: viewportConstraints.maxHeight,
+              minWidth: viewportConstraints.maxWidth,
             ),
-          ],
-        ),
-        Column(
-          children: [
-            Text("Berufserfahrung"),
-            ListView.builder(
-              shrinkWrap: true,
-              itemCount: this.cv.workExperience.length,
-              itemBuilder: (BuildContext context, int index) => Row(
-                children: [
-                  Text(this.cv.workExperience[index]["dateRange"]),
-                  Text(this.cv.workExperience[index]["company"]),
-                ],
-              ),
+            child: Flex(
+              direction: isScreenWide ? Axis.horizontal : Axis.vertical,
+              mainAxisAlignment: isScreenWide
+                  ? MainAxisAlignment.spaceEvenly
+                  : MainAxisAlignment.start,
+              children: [
+                Column(
+                  children: [
+                    Container(
+                      constraints: BoxConstraints(maxHeight: 600),
+                      child: Image.asset(
+                        this.cv.person.photo,
+                        fit: BoxFit.fitHeight,
+                      ),
+                    ),
+                    Column(
+                      children: [
+                        Text(this.cv.person.fullName),
+                        Text(DateFormat('dd. MMMM yyyy')
+                            .format(this.cv.person.birthdate)),
+                        Text(this.cv.person.nationality),
+                        Text(this.cv.person.address.join(', ')),
+                        Text(this.cv.person.phoneNumber),
+                        InkWell(
+                          child: Text(this.cv.person.mailAdress,
+                              style: TextStyle(
+                                  decoration: TextDecoration.underline,
+                                  color: Colors.blue)),
+                          onTap: () =>
+                              launch('mailto:${this.cv.person.mailAdress}'),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Berufserfahrung"),
+                        ...this.cv.workExperience.map((e) => Row(children: [
+                              Text(e["dateRange"]),
+                              Text(e["company"])
+                            ]))
+                      ],
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Ausbildung"),
+                        ...this.cv.education.map((e) => Row(children: [
+                              Text(e["dateRange"]),
+                              Text(e["school"])
+                            ]))
+                      ],
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Kenntnisse"),
+                        ...this.cv.skills.map((e) =>
+                            Row(children: [Text(e["level"]), Text(e["skill"])]))
+                      ],
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Sprachen"),
+                        ...this.cv.languages.map((e) => Row(
+                            children: [Text(e["level"]), Text(e["language"])]))
+                      ],
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("hobbies"),
+                        ...this.cv.hobbies.map(
+                              (e) => Row(
+                                children: [
+                                  Text(e),
+                                ],
+                              ),
+                            ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
             ),
-          ],
-        ),
-        Column(
-          children: [
-            Text("Ausbildung"),
-            ListView.builder(
-              shrinkWrap: true,
-              itemCount: this.cv.education.length,
-              itemBuilder: (BuildContext context, int index) => Row(
-                children: [
-                  Text(this.cv.education[index]["dateRange"]),
-                  Text(this.cv.education[index]["school"]),
-                ],
-              ),
-            ),
-          ],
-        ),
-        Column(
-          children: [
-            Text("Kenntnisse"),
-            ListView.builder(
-              shrinkWrap: true,
-              itemCount: this.cv.skills.length,
-              itemBuilder: (BuildContext context, int index) => Row(
-                children: [
-                  Text(this.cv.skills[index]["level"]),
-                  Text(this.cv.skills[index]["skill"]),
-                ],
-              ),
-            ),
-          ],
-        ),
-        Column(
-          children: [
-            Text("Sprachen"),
-            ListView.builder(
-              shrinkWrap: true,
-              itemCount: this.cv.languages.length,
-              itemBuilder: (BuildContext context, int index) => Row(
-                children: [
-                  Text(this.cv.languages[index]["level"]),
-                  Text(this.cv.languages[index]["language"]),
-                ],
-              ),
-            ),
-          ],
-        ),
-        Column(
-          children: [
-            Text("Interessen"),
-            ListView.builder(
-              shrinkWrap: true,
-              itemCount: this.cv.hobbies.length,
-              itemBuilder: (BuildContext context, int index) => Row(
-                children: [
-                  Text(this.cv.hobbies[index]),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ],
+          ),
+        );
+      },
     );
   }
 }
