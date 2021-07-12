@@ -94,54 +94,79 @@ class CVWidget extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Berufserfahrung"),
-                        ...this.cv.workExperience.map((e) => Row(children: [
-                              Text(e["dateRange"]),
-                              Text(e["company"])
-                            ]))
-                      ],
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Ausbildung"),
-                        ...this.cv.education.map((e) => Row(children: [
-                              Text(e["dateRange"]),
-                              Text(e["school"])
-                            ]))
-                      ],
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Kenntnisse"),
-                        ...this.cv.skills.map((e) =>
-                            Row(children: [Text(e["level"]), Text(e["skill"])]))
-                      ],
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Sprachen"),
-                        ...this.cv.languages.map((e) => Row(
-                            children: [Text(e["level"]), Text(e["language"])]))
-                      ],
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("hobbies"),
-                        ...this.cv.hobbies.map(
-                              (e) => Row(
-                                children: [
-                                  Text(e),
-                                ],
-                              ),
+                    Paragraph(
+                      "Berufserfahrung",
+                      this
+                          .cv
+                          .workExperience
+                          .map(
+                            (e) => Row(
+                              children: [
+                                Text(e["dateRange"]),
+                                Text(e["company"]),
+                              ],
                             ),
-                      ],
+                          )
+                          .toList(),
+                    ),
+                    Paragraph(
+                      "Ausbildung",
+                      this
+                          .cv
+                          .education
+                          .map(
+                            (e) => Row(
+                              children: [
+                                Text(e["dateRange"]),
+                                Text(e["school"]),
+                              ],
+                            ),
+                          )
+                          .toList(),
+                    ),
+                    Paragraph(
+                      "Kenntnisse",
+                      this
+                          .cv
+                          .skills
+                          .map(
+                            (e) => Row(
+                              children: [
+                                Text(e["level"]),
+                                Text(e["skill"]),
+                              ],
+                            ),
+                          )
+                          .toList(),
+                    ),
+                    Paragraph(
+                      "Sprachen",
+                      this
+                          .cv
+                          .languages
+                          .map(
+                            (e) => Row(
+                              children: [
+                                Text(e["level"]),
+                                Text(e["language"]),
+                              ],
+                            ),
+                          )
+                          .toList(),
+                    ),
+                    Paragraph(
+                      "Hobbies",
+                      this
+                          .cv
+                          .hobbies
+                          .map(
+                            (e) => Row(
+                              children: [
+                                Text(e),
+                              ],
+                            ),
+                          )
+                          .toList(),
                     ),
                   ],
                 ),
@@ -150,6 +175,27 @@ class CVWidget extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+}
+
+class Paragraph extends StatelessWidget {
+  final String header;
+  final List<Widget> children;
+
+  Paragraph(this.header, this.children);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          this.header,
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        ),
+        ...this.children
+      ],
     );
   }
 }
